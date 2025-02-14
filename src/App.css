@@ -1,0 +1,65 @@
+.App {
+  margin-top: 80px;
+  text-align: center;
+  margin-left: 220px;
+  margin-right: 220px;
+  color: #1F3F65;
+  margin-bottom: 50px;
+}
+
+.App-split {
+  margin-top: 80px;
+  text-align: center;
+  color: #1F3F65;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 13px;
+  align-items: stretch;
+}
+
+.Card {
+  flex: 1;
+  max-width: 650px;
+  flex-direction: column;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.App-header {
+  background-color: whitesmoke;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #1F3F65;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.Font {
+  color: #1F3F65;
+  font-weight: 650;
+  font-size: 18px;
+}
+
+.Button {
+  background-color: #48ADA2;
+  color: whitesmoke;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.Button-bag {
+  background-color: #48ADA2;
+  color: whitesmoke;
+  font-size: 16px;
+  border-radius: 40px;
+}
+
+.Disabled-form {
+  color: grey;
+}
