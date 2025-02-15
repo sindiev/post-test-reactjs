@@ -13,16 +13,16 @@ function App() {
       <header className="nav-header">
         <nav className="nav">
           <ul>
-            <li>
+            <li className="Font-med">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="Font-med">
               <Link to="/bookList">Books</Link>
             </li>
-            <li>
+            <li className="Font-med">
               <Link to="/form">Sell Your Book</Link>
             </li>
-            <li>
+            <li className="Font-med">
               <Link to="/aboutUs">About Us</Link>
             </li>
           </ul>

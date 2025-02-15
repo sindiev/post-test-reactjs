@@ -79,7 +79,7 @@ export default function Payment() {
         icon: "success",
         draggable: true,
       }).then(() => {
-        resetFormPayment()
+        resetFormPayment();
         navigate("/bookList");
       });
     });
@@ -96,22 +96,19 @@ export default function Payment() {
           )}
         >
           <img
-            className="w-9 sm:w-16rem xl:w-5rem shadow-2 block xl:block mx-auto border-round"
+            className="w-9 sm:w-16rem xl:w-4rem shadow-2 block xl:block mx-auto border-round"
             src={item.image}
             alt={item.title}
           />
-          <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
-            <div className="flex flex-column align-items-center sm:align-items-start gap-3">
-              <div className="text-lg font-bold text-900">{item.title}</div>
-              <div className="text-base text-700">{item.writer}</div>
+          <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-7">
+            <div className="flex flex-column align-items-center sm:align-items-start gap-2">
+              <div className="text-base font-bold text-900">{item.title}</div>
+              <div className="text-sm text-700">{item.writer}</div>
               <Rating value={item.condition} readOnly cancel={false}></Rating>
-              <div className="text-justify text-lg text-700">
-                {item.summary}
-              </div>
             </div>
             <div className="Gap">
               <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-                <span className="text-xl font-semibold">Rp{item.price}</span>
+                <span className="text-m font-semibold">Rp{item.price}</span>
               </div>
               <Button
                 className="Button-delete"
@@ -139,10 +136,13 @@ export default function Payment() {
 
   return (
     <div className="App-split">
-      <Card title="Lets Shopping!" className="Card-form">
+      <Card
+        title={<span className="Font-big">Let's Shopping!</span>}
+        className="Card-form"
+      >
         <i
           className="pi pi-shopping-bag"
-          style={{ fontSize: "30px", paddingBottom: 20 }}
+          style={{ fontSize: "23px", paddingBottom: 20 }}
         ></i>
         <p className="m-0">
           <div className="flex flex-column gap-2 text-left mb-4">
@@ -163,6 +163,7 @@ export default function Payment() {
               Writer
             </label>
             <InputText
+              className="Font-med"
               disabled
               variant="filled"
               name="writer"
@@ -177,6 +178,7 @@ export default function Payment() {
               Condition Rate
             </label>
             <InputText
+              className="Font-med"
               disabled
               variant="filled"
               name="condition"
@@ -190,6 +192,7 @@ export default function Payment() {
               Summary
             </label>
             <InputTextarea
+              className="Font-med"
               autoResize="true"
               disabled
               variant="filled"
@@ -204,6 +207,7 @@ export default function Payment() {
               Price (IDR)
             </label>
             <InputText
+              className="Font-med"
               disabled
               variant="filled"
               name="price"
@@ -221,14 +225,22 @@ export default function Payment() {
         </p>
       </Card>
 
-      <Card title="Shopping Cart" className="Card">
+      <Card
+        title={<span className="Font-big">Shopping Cart</span>}
+        className="Card"
+      >
         <p className="mx-50">
           <div className="card">
-            <DataView value={dataPayment} listTemplate={listTemplate} emptyMessage="Your cart is currently empty."/>
+            <DataView
+              className="card"
+              value={dataPayment}
+              listTemplate={listTemplate}
+              emptyMessage="Your cart is currently empty."
+            />
           </div>
-          <Divider className="mt-100" />
+          <Divider />
           <div
-            className="Font-big"
+            className="Font"
             style={{
               justifyContent: "right",
               paddingRight: 15,
@@ -236,7 +248,7 @@ export default function Payment() {
             }}
           >
             Total Price:
-            <div className="Font-med" style={{ paddingLeft: 5, paddingTop: 3 }}>
+            <div className="Font-med" style={{ paddingLeft: 4, paddingTop: 1 }}>
               Rp{totalPrice},00
             </div>
           </div>
@@ -244,7 +256,7 @@ export default function Payment() {
         <div>
           {isVisibility && (
             <Button
-              className="Button"
+              className="Button-cart"
               icon="pi pi-shopping-cart"
               onClick={() => handleCheckoutPayment(arrayIdPayment)}
             />

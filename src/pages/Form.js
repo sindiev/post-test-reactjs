@@ -75,16 +75,14 @@ function Form() {
       draggable: true,
       showConfirmButton: false,
     })
-
-    setNewBooks((prevNewBooks) => [...prevNewBooks, bookSubmit])
   };
 
   return (
-    <div className="App">
-      <Card title="Sell Your Book!">
+    <div className="App-form">
+      <Card title={<span className="Font-big">Sell Your Book!</span>}>
         <i
           className="pi pi-shop"
-          style={{ fontSize: "2rem", paddingBottom: 20 }}
+          style={{ fontSize: "25px", paddingBottom: 20 }}
         ></i>
         <p className="m-0">
           <div className="flex flex-column gap-2 text-left mb-4">
@@ -93,6 +91,7 @@ function Form() {
             </label>
             <InputText
               name="seller"
+              className="Font-med"
               value={newBook.seller}
               onChange={handleChange}
             />
@@ -105,6 +104,7 @@ function Form() {
               onChange={handleChange}
               maxLength={25}
               name="noRek"
+              className="Font-med"
               value={newBook.noRek}
             />
           </div>
@@ -116,6 +116,7 @@ function Form() {
               onChange={handleChange}
               maxLength={13}
               name="noHp"
+              className="Font-med"
               value={newBook.noHp}
             />
             <small id="username-help">
@@ -127,6 +128,7 @@ function Form() {
               Title
             </label>
             <InputText
+            className="Font-med"
               name="title"
               value={newBook.title}
               aria-describedby="username-help"
@@ -141,6 +143,7 @@ function Form() {
               name="writer"
               value={newBook.writer}
               onChange={handleChange}
+              className="Font-med"
             />
           </div>
           <div className="flex flex-column gap-2 text-left mb-4">
@@ -148,6 +151,7 @@ function Form() {
               Price
             </label>
             <InputNumber
+            className="Font-med"
               name="price"
               value={newBook.price}
               onValueChange={(e) => handleChangeInputNum("price", e.value)}
@@ -158,6 +162,7 @@ function Form() {
               Condition Rate
             </label>
             <InputText
+            className="Font-med"
               onChange={handleChange}
               maxLength={1}
               name="condition"
@@ -170,6 +175,7 @@ function Form() {
               Summary
             </label>
             <InputTextarea
+            className="Font-med"
               onChange={handleChange}
               maxLength={250}
               name="summary"
@@ -181,6 +187,7 @@ function Form() {
               Photos URL
             </label>
             <InputText
+            className="Font-med"
               onChange={handleChange}
               name="image"
               value={newBook.image}

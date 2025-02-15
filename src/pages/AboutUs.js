@@ -9,7 +9,7 @@ function AboutUs() {
       <Card className="About-us">
         <i
           className="pi pi-user"
-          style={{ fontSize: "2rem", paddingBottom: 28 }}
+          style={{ fontSize: "25px", paddingBottom: 28 }}
         ></i>
         <img
             style={{borderRadius: 500 , width: 100, height: 'auto' , display: 'block', margin: '0 auto', marginBottom: 25}}

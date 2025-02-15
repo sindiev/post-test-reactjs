@@ -21,14 +21,14 @@
     display: flex;
   }
   .nav li {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   .nav a {
     text-decoration: none;
     color: #152025;
     font-weight: 750;
-    font-size: 17px;
+    font-size: 14px;
   }
   .nav a:hover {
     color: #48ADA2;

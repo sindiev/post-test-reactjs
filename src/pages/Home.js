@@ -8,7 +8,7 @@ export default function Home() {
     <div className="Poster">
       <Card className="About-us">
           <div className="Font-big">Welcome!</div>
-          <div className="Font-med">ceritanya poster promo.</div>
+          <div className="Font-med">Shh… just pretend it’s an official poster.</div>
       </Card>
     </div>
   );

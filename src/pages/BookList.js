@@ -28,27 +28,21 @@ export default function BookList() {
           )}
         >
           <img
-            className="w-9 sm:w-16rem xl:w-8rem shadow-2 block xl:block mx-auto border-round"
+            className="w-9 sm:w-16rem xl:w-7rem shadow-2 block xl:block mx-auto border-round"
             src={item.image}
             alt={item.title}
           />
           <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
             <div className="flex flex-column align-items-center sm:align-items-start gap-3">
-              <div className="text-2xl font-bold text-900">{item.title}</div>
-              <div className="text-lg text-700">{item.writer}</div>
+              <div className="text-base font-bold text-900">{item.title}</div>
+              <div className="text-sm text-700">{item.writer}</div>
               <Rating value={item.condition} readOnly cancel={false}></Rating>
-              {/* <div className="flex align-items-center gap-3">
-                <Tag
-                  value={product.inventoryStatus}
-                  severity={getSeverity(item)}
-                ></Tag>
-              </div> */}
-              <div className="text-justify text-lg text-700">
+              <div className="text-justify text-sm text-700">
                 {item.summary}
               </div>
             </div>
             <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-              <span className="text-xl font-semibold">Rp{item.price}</span>
+              <span className="text-base font-semibold">Rp{item.price}</span>
             </div>
           </div>
         </div>
@@ -72,21 +66,21 @@ export default function BookList() {
   };
 
   return (
-    <div className="App">
+    <div className="App-form">
       <div
         style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}
       >
-        <h2>Let's search here!</h2>
+        <div className="Font-big">Let's search here!</div>
         <i
           className="pi pi-search"
-          style={{ fontSize: "25px", paddingTop: 10, paddingLeft: 2 }}
+          style={{ fontSize: "18px", paddingLeft: 2 }}
         ></i>
       </div>
       <div
         style={{
           marginBottom: 75,
           display: "flex",
-          gap: "8px",
+          gap: "5px",
           justifyContent: "center",
         }}
       >
@@ -101,7 +95,7 @@ export default function BookList() {
           }}
           autoResize
           rows={1}
-          cols={80}
+          cols={60}
         />
         <Button
           className="Button-bag"
