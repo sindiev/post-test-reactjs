@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 
 function Form() {
   const { addSales , listBookOri } = useStore();
-  const [ setNewBooks ] = useState([]);
   const [newBook, setNewBook] = useState({
     id:"",
     title: "",
