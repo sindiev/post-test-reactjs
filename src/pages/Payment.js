@@ -4,31 +4,32 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import "primeicons/primeicons.css";
 import { Dropdown } from "primereact/dropdown";
-import { BookService } from "../stores/data/BookService";
 import { InputTextarea } from "primereact/inputtextarea";
 import { classNames } from "primereact/utils";
 import { Rating } from "primereact/rating";
 import { DataView } from "primereact/dataview";
+import useStore from "../stores/zustand/store";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { Divider } from "primereact/divider";
 
 export default function Payment() {
-  const [books, setBooks] = useState(null);
-  const [book, setBook] = useState({
-    id: "",
-    image: "",
-    title: "",
-    writer: "",
-    price: "",
-    condition: "",
-    summary: "",
-    seller: "",
-    noRek: "",
-    noHp: "",
-    inStock: false,
-  });
+  const {
+    dataPayment,
+    addPayment,
+    deleteBook,
+    listBookOri,
+    checkoutPayment,
+    totalPrice,
+    updatedTotalPrice,
+    resetFormPayment,
+  } = useStore();
+  const [book, setBook] = useState("");
+  const [isVisibility, setIsVisibility] = useState(false);
 
   useEffect(() => {
-    BookService.getList().then((data) => setBooks(data));
-  }, []);
+    setIsVisibility(dataPayment.length > 0);
+  }, [dataPayment]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +38,53 @@ export default function Payment() {
       [name]: value,
     }));
   };
+
+  const handleCheckout = () => {
+    if (book.id) {
+      const isAdded = dataPayment.some((item) => item.id === book.id);
+      if (isAdded) {
+        alert("book already in cart!");
+      } else {
+        addPayment(book);
+        setBook({
+          title: "",
+          writer: "",
+          price: "",
+          condition: "",
+          summary: "",
+        });
+      }
+    }
+  };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Delete Success!",
+      text: "We put the book back on shelf :(",
+      icon: "success",
+      draggable: true,
+      showConfirmButton: false,
+    }).then(() => {
+      deleteBook(id);
+      updatedTotalPrice();
+    });
+  };
+
+  const navigate = useNavigate();
+  const handleCheckoutPayment = (arrayId) => {
+    arrayId.forEach((id) => {
+      checkoutPayment(id);
+      Swal.fire({
+        title: "Checkout Success!",
+        icon: "success",
+        draggable: true,
+      }).then(() => {
+        resetFormPayment()
+        navigate("/bookList");
+      });
+    });
+  };
+  const arrayIdPayment = dataPayment.map((book) => book.id);
 
   const cardTemplate = (item, index) => {
     return (
@@ -48,25 +96,28 @@ export default function Payment() {
           )}
         >
           <img
-            className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
+            className="w-9 sm:w-16rem xl:w-5rem shadow-2 block xl:block mx-auto border-round"
             src={item.image}
             alt={item.title}
           />
           <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
             <div className="flex flex-column align-items-center sm:align-items-start gap-3">
-              <div className="text-2xl font-bold text-900">{item.title}</div>
-              <div className="text-lg text-700">{item.writer}</div>
+              <div className="text-lg font-bold text-900">{item.title}</div>
+              <div className="text-base text-700">{item.writer}</div>
               <Rating value={item.condition} readOnly cancel={false}></Rating>
-              {/* <div className="flex align-items-center gap-3">
-                  <Tag
-                    value={product.inventoryStatus}
-                    severity={getSeverity(item)}
-                  ></Tag>
-                </div> */}
-              <div className="text-left text-lg text-700">{item.summary}</div>
+              <div className="text-justify text-lg text-700">
+                {item.summary}
+              </div>
             </div>
-            <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-              <span className="text-2xl font-semibold">Rp{item.price}</span>
+            <div className="Gap">
+              <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
+                <span className="text-xl font-semibold">Rp{item.price}</span>
+              </div>
+              <Button
+                className="Button-delete"
+                icon="pi pi-trash"
+                onClick={() => handleDelete(item.id)}
+              />
             </div>
           </div>
         </div>
@@ -84,9 +135,11 @@ export default function Payment() {
     return <div className="grid grid-nogutter">{list}</div>;
   };
 
+  const dropdownFiltered = listBookOri.filter((book) => book.inStock === false);
+
   return (
     <div className="App-split">
-      <Card title="Lets Shopping!" className="Card">
+      <Card title="Lets Shopping!" className="Card-form">
         <i
           className="pi pi-shopping-bag"
           style={{ fontSize: "30px", paddingBottom: 20 }}
@@ -99,7 +152,7 @@ export default function Payment() {
             <Dropdown
               value={book}
               onChange={(e) => setBook(e.value)}
-              options={books}
+              options={dropdownFiltered}
               optionLabel="title"
               placeholder="Select a Title"
               className="w-full"
@@ -137,7 +190,7 @@ export default function Payment() {
               Summary
             </label>
             <InputTextarea
-              autoResize
+              autoResize="true"
               disabled
               variant="filled"
               name="summary"
@@ -159,16 +212,44 @@ export default function Payment() {
               aria-describedby="username-help"
             />
           </div>
-          <Button className="Button" label="Checkout" icon="pi pi-check" />
+          <Button
+            className="Button"
+            label="Checkout"
+            icon="pi pi-check"
+            onClick={handleCheckout}
+          />
         </p>
       </Card>
 
-      <Card title="......" className="Card">
+      <Card title="Shopping Cart" className="Card">
         <p className="mx-50">
           <div className="card">
-            <DataView listTemplate={listTemplate} />
+            <DataView value={dataPayment} listTemplate={listTemplate} />
+          </div>
+          <Divider className="mt-100" />
+          <div
+            className="Font-big"
+            style={{
+              justifyContent: "right",
+              paddingRight: 15,
+              display: "flex",
+            }}
+          >
+            Total Price:
+            <div className="Font-med" style={{ paddingLeft: 5, paddingTop: 3 }}>
+              Rp{totalPrice},00
+            </div>
           </div>
         </p>
+        <div>
+          {isVisibility && (
+            <Button
+              className="Button"
+              icon="pi pi-shopping-cart"
+              onClick={() => handleCheckoutPayment(arrayIdPayment)}
+            />
+          )}
+        </div>
       </Card>
     </div>
   );

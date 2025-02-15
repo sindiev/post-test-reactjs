@@ -9073,6 +9073,11 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
+sweetalert2@^11.16.1:
+  version "11.16.1"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.16.1.tgz#2da37df345741b679d993b652a72155510667ef6"
+  integrity sha512-rGGByR/DkxqmPrJlsf4Yr8ud/kj3GQ3BVXokJIZK122fz/2PEZXexNZVftzdCyy4J1ehxXrhH+mUHPStCESvfA==
+
 symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"

@@ -19,21 +19,6 @@ export const BookService = {
       {
         id: 2,
         image:
-          "https://cdn.gramedia.com/uploads/items/9786020366517_Cantik-Itu-Luka-Hard-Cover---Limited-Edition.jpg",
-        title: "Cantik Itu Luka",
-        writer: "Eka Kurniawan",
-        price: 170000,
-        condition: 4,
-        summary:
-          "Across generations, the beautiful Indo prostitute Dewi Ayu, her daughters, and her grandchildren are beset by incest, murder, bestiality, rape, and the often fiercely vengeful undead.",
-        seller:"Risma",
-        noRek:"xxxxxxxxxxxxx",
-        noHp:"080000000000",
-        inStock: true,
-      },
-      {
-        id: 3,
-        image:
           "https://th.bing.com/th/id/OIP.6cJuM8OKJjr91R4Ryx7mNAHaLX?rs=1&pid=ImgDetMain",
         title: "Seperti Dendam, Rindu Harus Dibayar Tuntas",
         writer: "Eka Kurniawan",
