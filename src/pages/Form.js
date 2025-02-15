@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState } from "react";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 function Form() {
   const { addSales , listBookOri } = useStore();
-  const [newBooks, setNewBooks] = useState([]);
+  const [ setNewBooks ] = useState([]);
   const [newBook, setNewBook] = useState({
     id:"",
     title: "",

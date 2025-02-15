@@ -18,12 +18,6 @@ export default function BookList() {
     item.title.toLowerCase().includes(searchBook.toLowerCase())
   );
 
-  const handleSearchBar = () => {
-    const filteredBooks = listBookOri.filter((item) =>
-      item.title.toLowerCase().includes(searchBook.toLowerCase())
-    );
-  }
-
   const cardTemplate = (item, index) => {
     return (
       <div className="col-12" key={item.id}>
