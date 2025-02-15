@@ -224,7 +224,7 @@ export default function Payment() {
       <Card title="Shopping Cart" className="Card">
         <p className="mx-50">
           <div className="card">
-            <DataView value={dataPayment} listTemplate={listTemplate} />
+            <DataView value={dataPayment} listTemplate={listTemplate} emptyMessage="Your cart is currently empty."/>
           </div>
           <Divider className="mt-100" />
           <div

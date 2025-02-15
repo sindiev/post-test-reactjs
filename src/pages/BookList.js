@@ -116,7 +116,7 @@ export default function BookList() {
         />
       </div>
       <div className="card">
-        <DataView value={filteredBooks} listTemplate={listTemplate} />
+        <DataView value={filteredBooks} listTemplate={listTemplate} emptyMessage="No books available today! Why not sell yours?"/>
       </div>
     </div>
   );
